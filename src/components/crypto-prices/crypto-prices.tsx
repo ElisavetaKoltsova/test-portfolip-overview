@@ -1,17 +1,24 @@
-import { useBinanceWebSocket } from "../../hooks/useBinanceWebSocket";
+import { useAppSelector } from "../../hooks";
+import { CryptoData } from "../../hooks/useBinanceWebSocket";
+import { getCryptos, getCryptosDataLoadingStatus } from "../../store/crypto-process/selectors";
 import styles from '../add-crypto-modal/addCryptoModal.module.scss';
 import ClipLoader from "react-spinners/ClipLoader";
 
+// type CryptoPricesProps = {
+//   prices: Record<string, CryptoData>;
+//   isLoading: boolean;
+// }
+
 const CryptoPrices = () => {
-  const { prices, isLoading } = useBinanceWebSocket();
+  const prices = useAppSelector(getCryptos);
+  const isLoading = useAppSelector(getCryptosDataLoadingStatus);
 
   return (
     <div className={styles.modal__crypto}>
       {
-        isLoading ?
-        <ClipLoader color="rgb(255, 85, 85)" size={50} /> : ''
-      }
-      <ul className={styles.modal__list}>
+        isLoading || prices === null ?
+        <ClipLoader color="rgb(255, 85, 85)" size={50} /> : (
+          <ul className={styles.modal__list}>
         {Object.entries(prices).map(([symbol, { price, change }]) => (
             <li key={symbol} className={styles.modal__item}>
               <span>{symbol}</span>
@@ -22,6 +29,9 @@ const CryptoPrices = () => {
             </li>
           ))}
       </ul>
+        )
+      }
+      
     </div>
   );
 };

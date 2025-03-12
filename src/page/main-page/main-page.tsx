@@ -1,11 +1,19 @@
-import { JSX, useState } from "react";
+import { JSX, useEffect, useState } from "react";
 import styles from '../../portfolioOverview.module.scss';
 import classNames from "classnames";
-import CryptoPrices from "../../components/crypto-prices/crypto-prices";
 import AddCryptoModal from "../../components/add-crypto-modal/add-crypto-modal";
+import { useBinanceWebSocket } from "../../hooks/useBinanceWebSocket";
+import { useAppDispatch } from "../../hooks";
+import { setCryptos } from "../../store/crypto-process/crypto-process";
 
 export default function MainPage(): JSX.Element {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const { prices, isLoading } = useBinanceWebSocket();
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(setCryptos({cryptos: prices, isLoading}))
+    }, [dispatch, isLoading, prices]);
     
     return (
         <div className={styles.portfolio}>
@@ -38,7 +46,6 @@ export default function MainPage(): JSX.Element {
             {
                 isModalOpen ? <AddCryptoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} /> : ''
             }
-            {/* <CryptoPrices /> */}
         </div>
     );
 }
