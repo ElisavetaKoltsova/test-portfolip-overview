@@ -60,7 +60,7 @@ $color-negative-5: rgba(255, 20, 30, 1);
       border-bottom: 1px solid $color-primary-15;
       background-color: $color-accent-5;
       color: $color-primary-5
-  }
+    }
 
     &__selected {
         font-size: 18px;
@@ -115,15 +115,15 @@ $color-negative-5: rgba(255, 20, 30, 1);
     &__change {
         font-weight: bold;
 
-        &.positive {
+        &--positive {
             color: $color-positive-5;
         }
 
-        &.negative {
+        &--negative {
             color: $color-negative-5;
         }
 
-        &.neutral {
+        &--neutral {
             color: $color-primary-15;
         }
     }

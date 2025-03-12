@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { useAppSelector } from "../../hooks";
 import { CryptoData } from "../../hooks/useBinanceWebSocket";
 import { getCryptos, getCryptosDataLoadingStatus } from "../../store/crypto-process/selectors";
@@ -23,7 +24,7 @@ const CryptoPrices = () => {
             <li key={symbol} className={styles.modal__item}>
               <span>{symbol}</span>
               <span className={styles.modal__price}>{price}</span>
-              <span className={styles.modal__change}>
+              <span className={styles[`modal__change${parseFloat(change) >= 0 ? "--positive" : "--negative"}`]}>
                 {parseFloat(change) >= 0 ? "+" : ""} {change}%
               </span>
             </li>
