@@ -1,0 +1,130 @@
+$color-secondary-10: rgba(11, 14, 18, 1);
+$color-primary-5: rgba(255, 255, 255, 1);
+$color-primary-10: rgba(245, 245, 245, 1);
+$color-primary-15: rgba(220, 220, 220, 1);
+$color-accent-5: rgba(255, 85, 85, 1);
+$color-accent-10: rgba(215, 85, 85, 1);
+$color-positive-5: rgba(67, 173, 40, 1);
+$color-negative-5: rgba(255, 20, 30, 1);
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: $color-primary-10;
+    width: 350px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__title, &__subtitle {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    &__divider {
+        border: none;
+        border-top: 1px solid $color-primary-15;
+        margin: 10px 0;
+    }
+
+    &__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        max-height: 150px;
+        overflow-y: auto;
+        width: 100%;
+    }
+
+    &__item {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
+        cursor: pointer;
+
+        &--active {
+          border-bottom: 1px solid $color-primary-15;
+          background-color: $color-accent-5;
+          color: $color-primary-5
+        }
+    }
+
+    &__item:hover {
+      border-bottom: 1px solid $color-primary-15;
+      background-color: $color-accent-5;
+      color: $color-primary-5
+  }
+
+    &__selected {
+        font-size: 18px;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    &__crypto {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    &__button {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        border-radius: 20px;
+        font-size: 14px;
+        cursor: pointer;
+        color: $color-primary-5;
+        transition: background 0.3s;
+
+        &--add {
+            background: $color-accent-5;
+            margin-right: 10px;
+
+            &:hover {
+                background: $color-accent-10;
+            }
+        }
+
+        &--cancel {
+            background: $color-secondary-10;
+
+            &:hover {
+                background: darken($color-secondary-10, 10%);
+            }
+        }
+    }
+
+    &__change {
+        font-weight: bold;
+
+        &.positive {
+            color: $color-positive-5;
+        }
+
+        &.negative {
+            color: $color-negative-5;
+        }
+
+        &.neutral {
+            color: $color-primary-15;
+        }
+    }
+}
