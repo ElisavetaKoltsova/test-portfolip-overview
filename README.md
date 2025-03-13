@@ -1,3 +1,28 @@
+# Тестовое задание 
+
+Запуск npm start
+
+Архитектура FSD
+
+Модули:
+UI (components)
+Бизнес-логика (store, hooks)
+Типизация (types)
+Страницы (page)
+
+Основные библиотеки и фреймворки:
+React (react, react-dom) – библиотека для создания пользовательских интерфейсов.
+React Router (react-router) – маршрутизация в React-приложении.
+Redux Toolkit (@reduxjs/toolkit, react-redux) – управление состоянием приложения.
+TypeScript (typescript, @types/react, @types/react-dom, @types/node) – строго типизированный JavaScript.
+
+Стилизация:
+Sass (sass) – препроцессор для CSS.
+Classnames (classnames) – удобная работа с динамическими классами.
+
+Дополнительные утилиты:
+WS (WebSockets) (ws) – работа с WebSocket-соединениями.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
