@@ -5,6 +5,7 @@ import AddCryptoModal from "../../components/add-crypto-modal/add-crypto-modal";
 import { useBinanceWebSocket } from "../../hooks/useBinanceWebSocket";
 import { useAppDispatch } from "../../hooks";
 import { setCryptos } from "../../store/crypto-process/crypto-process";
+import UsersCryptosList from "../../components/users-cryptos-list/users-cryptos-list";
 
 export default function MainPage(): JSX.Element {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -14,6 +15,7 @@ export default function MainPage(): JSX.Element {
     useEffect(() => {
         dispatch(setCryptos({cryptos: prices, isLoading}))
     }, [dispatch, isLoading, prices]);
+
     
     return (
         <div className={styles.portfolio}>
@@ -32,16 +34,7 @@ export default function MainPage(): JSX.Element {
                         <th>% портфеля</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>BNB</td>
-                        <td>1.00000</td>
-                        <td>$557,63</td>
-                        <td>$557,63</td>
-                        <td className={classNames(styles.positive)}>+0.63%</td>
-                        <td>100.00%</td>
-                    </tr>
-                </tbody>
+                <UsersCryptosList />
             </table>
             {
                 isModalOpen ? <AddCryptoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} /> : ''

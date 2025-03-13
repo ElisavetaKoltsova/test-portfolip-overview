@@ -1,8 +1,14 @@
 import { CryptoData } from "../hooks/useBinanceWebSocket";
 import { store } from "../store";
 
+export type Crypto = {
+  name: string;
+  prices: CryptoData;
+}
+
 export type CryptoProcess = {
-  cryptos: Record<string, CryptoData> | null;
+  cryptos: Record<string, CryptoData>;
+  usersCryptos: Record<string, {prices: CryptoData, count: number}>;
   isCryptosDataLoading: boolean;
 }
 

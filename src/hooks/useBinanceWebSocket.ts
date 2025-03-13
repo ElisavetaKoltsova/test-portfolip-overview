@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const BINANCE_WS_URL = "wss://stream.binance.com:9443/ws/!ticker@arr";
-const UPDATE_INTERVAL = 5000; // Обновление раз в 5 секунд
+const UPDATE_INTERVAL = 20000; // Обновление раз в 20 секунд
 
 export type CryptoData = {
   price: string;
